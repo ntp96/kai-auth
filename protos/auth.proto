@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "protos/.;auth";
+
+message LoginMsg {
+	string domain = 1;
+	string auth_key = 2;
+	string secret_key = 3;
+}
+
+message RegisterMsg {
+	string domain = 1;
+	string auth_key = 2;
+	string secret_key = 3;
+}
+
+message Token {
+	string access_token = 1;
+}
+
+message Permission {
+	bool permission = 1;
+}
+
+service Authentication {
+	rpc Register(RegisterMsg) returns (Token) {};
+	rpc Login(LoginMsg) returns (Token) {};
+	rpc Authorization(Token) returns (Permission) {};
+}

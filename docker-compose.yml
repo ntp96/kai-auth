@@ -1,0 +1,7 @@
+version: "3"
+services: 
+    auth-service:
+        build: .
+        ports: 
+            - "3333:3333"
+        entrypoint: auth-service
